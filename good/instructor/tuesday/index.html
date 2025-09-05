@@ -1,0 +1,780 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/icr_svg_logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>Tuesday Live Coding Script: Good-Practices in Research Coding - Research Software Good Practice</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tuesday-live-coding-script-good-practices-in-research-coding" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Research Software Good Practice" class="md-header__button md-logo" aria-label="Research Software Good Practice" data-md-component="logo">
+      
+  <img src="../../../assets/icr_svg_logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Research Software Good Practice
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tuesday Live Coding Script: Good-Practices in Research Coding
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Research Software Good Practice" class="md-nav__button md-logo" aria-label="Research Software Good Practice" data-md-component="logo">
+      
+  <img src="../../../assets/icr_svg_logo.svg" alt="logo">
+
+    </a>
+    Research Software Good Practice
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Webinar Series
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Webinar Series
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Good-practice
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Good-practice
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prerequisites
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monday/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Monday
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Vibe-coding
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Vibe-coding
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../vibe/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#monday-session-timings-instructor-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monday Session Timings (Instructor Guide)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tuesday-live-coding-script-good-practices-in-research-coding">Tuesday Live Coding Script: Good-Practices in Research Coding</h1>
+<p><a href="../overview/">instructor home</a></p>
+<h2 id="monday-session-timings-instructor-guide">Monday Session Timings (Instructor Guide)</h2>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th style="text-align: center;">Suggested Time</th>
+<th style="text-align: center;">Running Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opening &amp; Welcome</td>
+<td style="text-align: center;">5 min</td>
+<td style="text-align: center;">5 min</td>
+</tr>
+<tr>
+<td>Reference to The Turing Way (Version Control)</td>
+<td style="text-align: center;">2 min</td>
+<td style="text-align: center;">7 min</td>
+</tr>
+<tr>
+<td>Pre-Session Setup</td>
+<td style="text-align: center;">3 min</td>
+<td style="text-align: center;">10 min</td>
+</tr>
+<tr>
+<td>Introduction to Version Control Concepts</td>
+<td style="text-align: center;">5 min</td>
+<td style="text-align: center;">15 min</td>
+</tr>
+<tr>
+<td>Setting Up Git &amp; Configuring Identity</td>
+<td style="text-align: center;">5 min</td>
+<td style="text-align: center;">20 min</td>
+</tr>
+<tr>
+<td>Initializing a Repository &amp; Tracking Changes</td>
+<td style="text-align: center;">8 min</td>
+<td style="text-align: center;">28 min</td>
+</tr>
+<tr>
+<td>Basic Git Commands (add, commit, status, log)</td>
+<td style="text-align: center;">7 min</td>
+<td style="text-align: center;">35 min</td>
+</tr>
+<tr>
+<td>Branching &amp; Collaboration</td>
+<td style="text-align: center;">8 min</td>
+<td style="text-align: center;">43 min</td>
+</tr>
+<tr>
+<td>Merge Demo &amp; Resolving Conflicts</td>
+<td style="text-align: center;">10 min</td>
+<td style="text-align: center;">53 min</td>
+</tr>
+<tr>
+<td>Using GitHub, GitLab, VSCode, GitHub Desktop</td>
+<td style="text-align: center;">5 min</td>
+<td style="text-align: center;">58 min</td>
+</tr>
+<tr>
+<td>Best Practices &amp; Team Coding</td>
+<td style="text-align: center;">4 min</td>
+<td style="text-align: center;">62 min</td>
+</tr>
+<tr>
+<td>Session Wrap-up &amp; Homework</td>
+<td style="text-align: center;">3 min</td>
+<td style="text-align: center;">65 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: center;"><strong>65 min</strong></td>
+<td style="text-align: center;">65 min</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_1"></h2>
+<p><em>Duration: 60 minutes | Format: Participatory live coding</em>
+<em>Homework: Short session consolidation</em></p>
+<h1 id="reference">Reference</h1>
+<p>For more on version control and reproducible research, see <a href="https://book.the-turing-way.org/reproducible-research/vcs">The Turing Way handbook: Version Control</a>. This resource explains why version control is essential for collaborative, transparent, and reproducible research.</p>
+<h2 id="pre-session-setup">Pre-Session Setup</h2>
+<p><strong>[ASIDE: Have terminal, VSCode, and browser tabs open for GitHub and ICR GitLab. Make sure yesterday's biomarkers project is available. Check that participants have Git installed.]</strong></p>
+<h2 id="opening-welcome">Opening &amp; Welcome</h2>
+<h3 id="what-i-say">What I Say:</h3>
+<p>"Good morning! Yesterday we set up our project folders and learned some command line basics. Today, we're going to learn about git, the tool that helps us keep track of changes and work together on research code. We'll use examples from our own institution, ICR."</p>
+<hr />
+<h2 id="part-21-starts-at-0-min-takes-5-min-what-is-git">Part 2.1 (starts at 0 min, takes 5 min): What is Git?</h2>
+<h3 id="what-i-say_1">What I Say:</h3>
+<p>"Git is a tool that helps you save versions of your code and documents, so you can go back in time, undo mistakes, and work with others. It's like a super-powered undo button for your research project."</p>
+<hr />
+<h2 id="part-22-starts-at-5-min-takes-5-min-setting-up-git-for-your-project">Part 2.2 (starts at 5 min, takes 5 min): Setting Up Git for Your Project</h2>
+<h3 id="what-i-say_2">What I Say:</h3>
+<p>"Let's check if git is installed and set up your name and email."</p>
+<h4 id="what-i-type-live-coding">What I Type (Live Coding):</h4>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>--version
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Your Name&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;your.email@icr.ac.uk&quot;</span>
+</code></pre></div>
+<hr />
+<h2 id="part-23-starts-at-10-min-takes-8-min-basic-git-commands">Part 2.3 (starts at 10 min, takes 8 min): Basic Git Commands</h2>
+<h3 id="what-i-say_3">What I Say:</h3>
+<p>"Let's turn our biomarkers project into a git repository and learn the basic commands."</p>
+<h4 id="what-i-type-live-coding_1">What I Type (Live Coding):</h4>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>biomarkers_project
+git<span class="w"> </span>init
+git<span class="w"> </span>status
+touch<span class="w"> </span>README.md
+git<span class="w"> </span>add<span class="w"> </span>README.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add README for biomarkers project&quot;</span>
+git<span class="w"> </span>status
+</code></pre></div>
+<hr />
+<h2 id="part-24-starts-at-18-min-takes-5-min-using-git-at-icr">Part 2.4 (starts at 18 min, takes 5 min): Using Git at ICR</h2>
+<h3 id="what-i-say_4">What I Say:</h3>
+<p>"At ICR, we use both GitHub and our internal GitLab for sharing code."</p>
+<p><strong>GitHub organisation:</strong> https://github.com/enterprises/icr/organizations
+<strong>ICR GitLab:</strong> https://git.icr.ac.uk/</p>
+<p>"You can create a repository on either platform. For sensitive or internal work, use ICR GitLab. For public or collaborative projects, GitHub is also available."</p>
+<hr />
+<h2 id="part-25-starts-at-23-min-takes-5-min-using-git-in-ides">Part 2.5 (starts at 23 min, takes 5 min): Using Git in IDEs</h2>
+<h3 id="what-i-say_5">What I Say:</h3>
+<p>"You can use git inside VSCode or RStudio. Both have built-in tools to help you see changes, commit, and push without using the command line."</p>
+<p><strong>[ASIDE: Show VSCode Source Control panel. In RStudio, show the Git tab if available.]</strong></p>
+<hr />
+<h2 id="part-26-starts-at-28-min-takes-5-min-using-github-desktop">Part 2.6 (starts at 28 min, takes 5 min): Using GitHub Desktop</h2>
+<h3 id="what-i-say_6">What I Say:</h3>
+<p>"GitHub Desktop is a simple app for managing git visually. You can use it with both GitHub and GitLab repositories."</p>
+<p><strong>[ASIDE: Show GitHub Desktop or screenshots. Demonstrate opening the biomarkers project and making a commit.]</strong></p>
+<hr />
+<h2 id="part-27-starts-at-33-min-takes-8-min-working-with-branches">Part 2.7 (starts at 33 min, takes 8 min): Working with Branches</h2>
+<h3 id="what-i-say_7">What I Say:</h3>
+<p>"Branches let you try new ideas without breaking your main code. Let's make a branch, switch to it, and merge it back."</p>
+<h4 id="what-i-type-live-coding_2">What I Type (Live Coding):</h4>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>branch<span class="w"> </span>experiment
+git<span class="w"> </span>checkout<span class="w"> </span>experiment
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;# Testing a new analysis&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>test.txt
+git<span class="w"> </span>add<span class="w"> </span>test.txt
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add test analysis file&quot;</span>
+git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>merge<span class="w"> </span>experiment
+</code></pre></div>
+<hr />
+<h2 id="part-28-starts-at-41-min-takes-10-min-resolving-a-merge-conflict">Part 2.8 (starts at 41 min, takes 10 min): Resolving a Merge Conflict</h2>
+<h3 id="what-i-say_8">What I Say:</h3>
+<p>"Merge conflicts are one of the most common fears in git, but they're just git's way of asking for your help when two people change the same part of a file. Let's see how to create and fix a simple conflict."</p>
+<h4 id="what-i-type-live-coding_3">What I Type (Live Coding):</h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># On main branch, edit README.md</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;This is the main branch version.&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>README.md
+git<span class="w"> </span>add<span class="w"> </span>README.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Edit README on main branch&quot;</span>
+
+<span class="c1"># Create and switch to a new branch</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>conflict-demo
+<span class="c1"># Edit the same line in README.md</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;This is the conflict-demo branch version.&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>README.md
+git<span class="w"> </span>add<span class="w"> </span>README.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Edit README on conflict-demo branch&quot;</span>
+
+<span class="c1"># Switch back to main and make another change</span>
+git<span class="w"> </span>checkout<span class="w"> </span>main
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Another change on main branch.&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>README.md
+git<span class="w"> </span>add<span class="w"> </span>README.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Another edit on main branch&quot;</span>
+
+<span class="c1"># Try to merge conflict-demo into main</span>
+git<span class="w"> </span>merge<span class="w"> </span>conflict-demo
+<span class="c1"># Git will report a conflict in README.md</span>
+</code></pre></div>
+<h4 id="what-i-say_9">What I Say:</h4>
+<p>"Git will stop and show a conflict in README.md. Open the file and you'll see both versions marked like this:</p>
+<div class="highlight"><pre><span></span><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Another change on main branch.
+=======
+This is the conflict-demo branch version.
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; conflict-demo
+</code></pre></div>
+<p>Edit the file to keep what you want (or combine both), then save it."</p>
+<h4 id="what-i-type-live-coding_4">What I Type (Live Coding):</h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># After editing README.md to resolve the conflict:</span>
+git<span class="w"> </span>add<span class="w"> </span>README.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Resolve merge conflict in README.md&quot;</span>
+</code></pre></div>
+<h3 id="what-i-say_10">What I Say:</h3>
+<p>"That's it! Merge conflicts are normal and just mean git needs your help. Take your time, read the markers, and choose what you want to keep."</p>
+<hr />
+<h2 id="part-29-starts-at-51-min-takes-5-min-collaborating-with-others">Part 2.9 (starts at 51 min, takes 5 min): Collaborating with Others</h2>
+<h3 id="what-i-say_11">What I Say:</h3>
+<p>"To work with others, you can clone a repository, pull changes, and push your own updates."</p>
+<h4 id="what-i-type-live-coding_5">What I Type (Live Coding):</h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Clone a repository (example)</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://git.icr.ac.uk/yourusername/biomarkers_project.git
+<span class="c1"># Pull latest changes</span>
+git<span class="w"> </span>pull
+<span class="c1"># Push your changes</span>
+git<span class="w"> </span>push
+</code></pre></div>
+<hr />
+<h2 id="part-210-starts-at-56-min-takes-4-min-best-practices-for-research-projects">Part 2.10 (starts at 56 min, takes 4 min): Best Practices for Research Projects</h2>
+<h3 id="what-i-say_12">What I Say:</h3>
+<ul>
+<li>Commit often with clear messages</li>
+<li>Don't put raw data or sensitive files in git</li>
+<li>Use branches for new ideas</li>
+<li>Always pull before you push</li>
+<li>Use .gitignore to keep your repository clean</li>
+</ul>
+<hr />
+<h2 id="session-wrap-up-homework-starts-at-60-min-takes-3-min">Session Wrap-up &amp; Homework (starts at 60 min, takes 3 min)</h2>
+<h3 id="what-i-say_13">What I Say:</h3>
+<p>"Great job today! You've learned the basics of git, how to use it at ICR, and how to work with others. Next time, we'll build on this with more coding and analysis."</p>
+<h3 id="homework-session-consolidation">Homework (Session Consolidation):</h3>
+<ul>
+<li>Practice the basic git commands (<code>init</code>, <code>add</code>, <code>commit</code>, <code>status</code>) in your biomarkers project</li>
+<li>Try making a branch and merging it</li>
+<li>Explore the ICR GitLab or GitHub organisation</li>
+</ul>
+<p><strong>See you next session!</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>
